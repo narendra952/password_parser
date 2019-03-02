@@ -6,11 +6,11 @@ single json output
 optional arguments:
   -h, --help            show this help message and exit
  
-  -p PASSWDPATH, --passwd PASSWDPATH
+  -p PASSWDPATH,     --passwd PASSWDPATH
                         passwd file path
                         
-  -g GROUPPATH, --group GROUPPATH
+  -g GROUPPATH,     --group GROUPPATH
                         group file path
                         
-  -o OUTPUTJSONPATH, --outputfile OUTPUTJSONPATH
+  -o OUTPUTJSONPATH,     --outputfile OUTPUTJSONPATH
                         output Json file path
