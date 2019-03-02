@@ -33,7 +33,6 @@ def checkFileValidity(fname):
         sys.exit("{}: {}".format("IOError", 'Permission denied to read file %s' % (fname)))
     return fname
 
-# folders = [f for f in os.listdir(path_to_folders) if os.path.isdir(os.path.join(path_to_folders, f))]
 
 """ 1. The below function checks if each line in passwd file is as per standard format 
     2. Code for User home directory path existence and user login shell path existence is also supported,
