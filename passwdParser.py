@@ -2,7 +2,8 @@ import json
 import argparse
 import os.path
 
-"""constant template values for passwd file
+"""
+constant template values for passwd file
 """
 MAX_FIELDS_IN_A_LINE_PASSWD_FILE = 7
 USER_NAME_INDEX = 0
@@ -12,14 +13,16 @@ USER_GECOS_INDEX = 4
 USER_HOME_DIRECTORY_PATH_INDEX = 5
 USER_LOGIN_SHELL_PATH_INDEX = 6
 
-"""constant template values for group file
+"""
+constant template values for group file
 """
 MAX_FIELDS_IN_A_LINE_GROUP_FILE = 4
 GROUP_NAME_INDEX = 0
 GROUP_ID_INDEX = 2
 GROUP_USERS_INDEX = 3
 
-"""constant template values for merged json file
+"""
+constant template values for merged json file
 """
 UID = 'uid'
 FULL_NAME = 'full_name'
@@ -34,9 +37,10 @@ def checkFileValidity(fname):
     return fname
 
 
-""" 1. The below function checks if each line in passwd file is as per standard format 
-    2. Code for User home directory path existence and user login shell path existence is also supported,
-        but os.path.isdir is not working in my laptop. So commented it
+""" 
+	1. The below function checks if each line in passwd file is as per standard format 
+	2. Code for User home directory path existence and user login shell path existence is also supported,
+           but os.path.isdir is not working in my laptop. So commented it
 """
 def checkValidityOfLineInPasswdFile(passwdData, distinctGroupIDs, distinctUserIds, distinctUserNames):
     """check if number of fields in a line are MAX_FIELDS_IN_A_LINE_PASSWD_FILE_FILE(4) """
@@ -69,7 +73,8 @@ def checkValidityOfLineInGroupFile(groupData, distinctGroupIDs, distinctGroupNam
   
 
     
-""" The below function parses the passwd file to get the users mapped to corresponding groups 
+"""
+ The below function parses the passwd file to get the users mapped to corresponding groups 
 """
 def parsePasswdFile(fname, distinctGroupIDs, usersGroupMap):
     with open(fname, 'r') as file:
@@ -98,14 +103,16 @@ def parsePasswdFile(fname, distinctGroupIDs, usersGroupMap):
     return userMappedToGroups        
     
     
-""" The below function parses the group file to get the users who are in atleast one group 
+""" 
+The below function parses the group file to get the users who are in atleast one group 
 """
 def parseGroupFile(fname, distinctGroupIDs):
     with open(fname, 'r') as file:
         distinctGroupNames = set() # 'group_1', 'group_2' 
         groups = dict() 
-        """ { '1'->('group_1','group_2')
-                '2'->('group_1','group_3','group_5')}  
+        """
+		 { '1'->('group_1','group_2')
+                   '2'->('group_1','group_3','group_5')}  
         """
         for line in file:
             line = line.rstrip()
@@ -114,7 +121,8 @@ def parseGroupFile(fname, distinctGroupIDs):
             distinctGroupNames.add(groupData[GROUP_NAME_INDEX])
             distinctGroupIDs[groupData[GROUP_ID_INDEX]] = groupData[GROUP_NAME_INDEX]
             userList =  groupData[GROUP_USERS_INDEX].split(',') 
-            """taking first value in GECOS which corresponds to full name
+            """
+		taking first value in GECOS which corresponds to full name
                 Source: https://en.wikipedia.org/wiki/Gecos_field
             """ 
             if len(groupData[GROUP_USERS_INDEX]) < 2:
@@ -123,7 +131,8 @@ def parseGroupFile(fname, distinctGroupIDs):
                 if user not in groups:
                     groups[user] = []
                 groups[user].append(groupData[GROUP_NAME_INDEX])  
-                """ Assumed group name and user name can be same
+                """ 
+		        Assumed group name and user name can be same
                 """
     return groups
 
@@ -142,7 +151,8 @@ checkFileValidity(args.groupPath)
 
 distinctGroupIDs = {} # '1'->'group_1', '2'->'group_2'
 
-"""parse group file to generate user->groups mapping (usersGroupMap)
+"""
+parse group file to generate user->groups mapping (usersGroupMap)
 For example:
     ubuntu -> ['adm','cdrom','sudo']
     narendra -> ['audio']
@@ -150,7 +160,8 @@ For example:
 usersGroupMap = parseGroupFile(args.groupPath, distinctGroupIDs)
 
 
-"""parse passwd file to get completeUserInfo
+"""
+parse passwd file to get completeUserInfo
 For example:
     for a single user, 
     'list' -> { "uid": "38",
