@@ -4,6 +4,7 @@ Parse the UNIX /etc/passwd and /etc/group files and combine the data into a
 single json output
 
 optional arguments:
+
   -h, --help            show this help message and exit
  
   -p PASSWDPATH,     --passwd PASSWDPATH
