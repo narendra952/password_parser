@@ -19,7 +19,7 @@ GROUP_NAME_INDEX = 0
 GROUP_ID_INDEX = 2
 GROUP_USERS_INDEX = 3
 
-"""constant template values for json file
+"""constant template values for merged json file
 """
 UID = 'uid'
 FULL_NAME = 'full_name'
