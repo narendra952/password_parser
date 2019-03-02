@@ -5,6 +5,7 @@ single json output
 
 optional arguments:
   -h, --help            show this help message and exit
+ 
   -p PASSWDPATH, --passwd PASSWDPATH
                         passwd file path
   -g GROUPPATH, --group GROUPPATH
