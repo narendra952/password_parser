@@ -8,7 +8,9 @@ optional arguments:
  
   -p PASSWDPATH, --passwd PASSWDPATH
                         passwd file path
+                        
   -g GROUPPATH, --group GROUPPATH
                         group file path
+                        
   -o OUTPUTJSONPATH, --outputfile OUTPUTJSONPATH
                         output Json file path
